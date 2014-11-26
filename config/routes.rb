@@ -53,4 +53,8 @@ Rails.application.routes.draw do
   #   end
   resources :users
   resource :session
+
+  namespace :api, defaults: {format: :json} do
+    resources :books
+  end
 end
