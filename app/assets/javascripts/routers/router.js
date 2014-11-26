@@ -5,6 +5,16 @@ GoodThings.Routers.GoodRouter = Backbone.Router.extend({
 		console.log(this.$rootEl);
 	},
 
+	routes: {
+		'': 'index'
+	},
+
+	index: function(){
+		console.log("reaching index");
+		var indexView = new GoodThings.Views.BookIndex();
+		this._swapView(indexView);
+	},
+
 	_swapView: function(view){
 		this.currentView && this.currentView.remove();
 		this.currentView = view;
