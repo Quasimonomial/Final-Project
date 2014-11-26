@@ -3,9 +3,10 @@ window.Goodthings = {
 	Collections: {},
 	Views: {},
 	Routers: {},
-	Utils: {}.
+	Utils: {},
 	initialize: function(){
 		//initialize a router when I build one
-		Backbone.history.start();
+		console.log("script initializing");
+		//Backbone.history.start();
 	}
 }
