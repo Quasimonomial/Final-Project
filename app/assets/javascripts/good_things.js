@@ -5,7 +5,7 @@ window.GoodThings = {
 	Routers: {},
 	Utils: {},
 	initialize: function(){
-		//initialize a router when I build one
+		new GoodThings.Routers.GoodRouter({$rootEl: $('#primary')});
 		console.log("script initializing");
 		Backbone.history.start();
 	}

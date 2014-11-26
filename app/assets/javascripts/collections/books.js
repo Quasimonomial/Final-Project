@@ -1,4 +1,4 @@
-GoodThings.Collections.Books = Backbone.Collections.extend({
+GoodThings.Collections.Books = Backbone.Collection.extend({
 	url: "api/books",
 	model: GoodThings.Models.Book,
 
