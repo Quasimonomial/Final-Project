@@ -38,7 +38,7 @@ module Api
       if @book.update_attributes(book_params)
         render json: @book
       else
-        render json: @book.errors.full_messages, status:
+        render json: [@book.errors.full_messages, status: 422]
       end
     end
 
