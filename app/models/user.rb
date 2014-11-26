@@ -15,15 +15,18 @@ class User < ActiveRecord::Base
   validates  :email, :password_digest, :session_token, presence: true
   validates  :email, uniqueness: true, format: {with: /@/}
   validates :password, length: {minimum: 6, allow_nil: true}
-
+  
   attr_reader :password
 
 
   after_initialize :ensure_session_token
 
   def self.find_by_credentials email, password
-    user = user.find_by_email(email)
-
+    user =User.find_by_email(email)
+    if user && user.valid_password?(password)
+      return user
+    end
+    nil
   end
 
   def valid_password? password
