@@ -11,7 +11,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141125194348) do
+ActiveRecord::Schema.define(version: 20141126171744) do
+
+  create_table "books", force: true do |t|
+    t.string   "title"
+    t.string   "author"
+    t.integer  "year"
+    t.string   "isbn"
+    t.string   "publisher"
+    t.text     "description"
+    t.string   "cover"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "books", ["author"], name: "index_books_on_author"
+  add_index "books", ["isbn"], name: "index_books_on_isbn", unique: true
+  add_index "books", ["title"], name: "index_books_on_title"
 
   create_table "users", force: true do |t|
     t.string   "email",           null: false
