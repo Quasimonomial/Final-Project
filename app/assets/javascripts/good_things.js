@@ -1,4 +1,4 @@
-window.Goodthings = {
+window.GoodThings = {
 	Models: {},
 	Collections: {},
 	Views: {},
@@ -7,6 +7,6 @@ window.Goodthings = {
 	initialize: function(){
 		//initialize a router when I build one
 		console.log("script initializing");
-		//Backbone.history.start();
+		Backbone.history.start();
 	}
 }
