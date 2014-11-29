@@ -1,1 +1,16 @@
 <h3>This is a form</h3>
+
+<form>
+	<ul class="errors">
+	</ul>
+	<label>Title:
+		<input type="text" name="title" value="<%= book.escape("title") %>" >
+	</label>
+	<label>Author:
+		<input type="text" name="author" value="<%= book.escape("author") %>" >
+	</label>
+	
+	<input type="submit">
+</form>
+
+<a href="/#/books">Back to Index</a>

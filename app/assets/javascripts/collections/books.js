@@ -8,8 +8,8 @@ GoodThings.Collections.Books = Backbone.Collection.extend({
 	    var that = this;
 	    if(!book) {
 	    	console.log("book not found");
-	      book = new GoodThings.Models.Book({ id: id });
-	      book.fetch({
+	      	book = new GoodThings.Models.Book({ id: id });
+	      	book.fetch({
 	        success: function () {
 	          that.add(book);
 	        }

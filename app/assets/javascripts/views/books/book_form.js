@@ -5,19 +5,21 @@ GoodThings.Views.BookForm = Backbone.View.extend({
 		'submit form': 'submit'
 	},
 
-	intialize: function(){
+	initialize: function(){
 		this.listenTo(this.model, 'sync', this.render);
 	},
 
 	render: function(){
-		var content = this.template();
+		var content = this.template({
+			book: this.model
+		});
 
 		this.$el.html(content);
 		
 		return this;
 	},
 
-	submit: function(){
+	submit: function(event){
 		event.preventDefault();
 
 		var attrs = $(event.target).serializeJSON();
