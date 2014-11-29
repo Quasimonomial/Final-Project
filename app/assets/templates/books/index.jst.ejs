@@ -1,4 +1,10 @@
 <h3>This is an Index</h3>
 
 <p> Rendering Books: </p> 
-<%= books %>
+<ul>
+	<% books.each(function (book) { %>
+		<li>
+			<a href = '#/books/<%= book.id%>'> <%= book.escape('title') %> </a>
+		</li>
+	<% }); %>
+</ul>
