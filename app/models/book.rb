@@ -16,7 +16,7 @@
 
 class Book < ActiveRecord::Base
   validates :title, :author, presence: true
-  validates :isbn, uniqueness: true
+  validates :isbn, uniqueness: true, allow_nil: true 
   validates_uniqueness_of :title, scope: :author
 
   #note that I dont' quite like this, author will be a model so we will have to change that string to Author Id, but that will involve creating books to create new authors in some instances so lets bear with that for a while
