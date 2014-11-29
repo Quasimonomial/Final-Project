@@ -27,6 +27,7 @@ GoodThings.Routers.GoodRouter = Backbone.Router.extend({
 		var book = GoodThings.books.getOrFetch(id);
 		console.log("routing to show page");
 		var showView = new GoodThings.Views.BookShow({
+			collection: GoodThings.books,
 			model: book
 		});
 		this._swapView(showView)
@@ -34,13 +35,21 @@ GoodThings.Routers.GoodRouter = Backbone.Router.extend({
 
 	new: function(){
 		console.log("routing to new page");
-		var newView = new GoodThings.Views.BookForm();
+		var newBook = new GoodThings.Models.Book();
+		var newView = new GoodThings.Views.BookForm({
+			collection: GoodThings.books,
+			model: newBook
+		});
 		this._swapView(newView);
 	},
 
 	edit: function(){
 		console.log("routing to edit page");
-		var editView = new GoodThings.Views.BookForm();
+		var book = GoodThings.books.getOrFetch(id);
+		var editView = new GoodThings.Views.BookForm({
+			collection: GoodThings.books,
+			model: book
+		});
 		this._swapView
 	},
 
