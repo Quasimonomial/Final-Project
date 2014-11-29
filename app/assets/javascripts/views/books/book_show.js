@@ -1,7 +1,7 @@
 GoodThings.Views.BookShow = Backbone.View.extend({
 	template: JST['books/show'],
 
-	intialize: function(){
+	initialize: function(){
 		this.listenTo(this.model, 'sync', this.render);
 	},
 
