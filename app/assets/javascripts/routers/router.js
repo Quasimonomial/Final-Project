@@ -43,14 +43,14 @@ GoodThings.Routers.GoodRouter = Backbone.Router.extend({
 		this._swapView(newView);
 	},
 
-	edit: function(){
+	edit: function(id){
 		console.log("routing to edit page");
 		var book = GoodThings.books.getOrFetch(id);
 		var editView = new GoodThings.Views.BookForm({
 			collection: GoodThings.books,
 			model: book
 		});
-		this._swapView
+		this._swapView(editView);
 	},
 
 	_swapView: function(view){
