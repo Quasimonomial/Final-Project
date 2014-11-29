@@ -1,1 +1,9 @@
+<% console.log("Rendering show template");%>
+<% console.log(book.toJSON()); %>
+
 <h3>This is a Show page</h3>
+
+<p> <%= book.id %> </p>
+<p> <%= book.escape("title") %> </p>
+
+<a href='/#/books'>Back To Index</a>

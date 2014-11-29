@@ -23,9 +23,12 @@ GoodThings.Routers.GoodRouter = Backbone.Router.extend({
 		this._swapView(indexView);
 	},
 
-	show: function(){
+	show: function(id){
+		var book = GoodThings.books.getOrFetch(id);
 		console.log("routing to show page");
-		var showView = new GoodThings.Views.BookShow();
+		var showView = new GoodThings.Views.BookShow({
+			model: book
+		});
 		this._swapView(showView)
 	},
 

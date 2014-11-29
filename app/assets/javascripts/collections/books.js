@@ -3,16 +3,19 @@ GoodThings.Collections.Books = Backbone.Collection.extend({
 	model: GoodThings.Models.Book,
 
 	getOrFetch: function (id) {
+		console.log("getting or fetching");
 	    var book = this.get(id);
-
-	    if(!board) {
-	      book = new GOodThings.Models.Book({ id: id });
+	    var that = this;
+	    if(!book) {
+	    	console.log("book not found");
+	      book = new GoodThings.Models.Book({ id: id });
 	      book.fetch({
 	        success: function () {
-	          this.add(book);
-	        }.bind(this)
+	          that.add(book);
+	        }
 	      });
 	    } else {
+	    	console.log("book found");
 	     	book.fetch();
 	    }
 
