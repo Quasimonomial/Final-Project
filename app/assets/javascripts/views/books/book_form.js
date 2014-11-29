@@ -26,7 +26,7 @@ GoodThings.Views.BookForm = Backbone.View.extend({
 
 		var success = function(){
 			this.collection.add(this.model, {merge: true});
-			Backbone.history.navigate("/#/books", {trigger: true});
+			Backbone.history.navigate("#/books", {trigger: true});
 		}.bind(this);
 
 		function errors(model, response){
