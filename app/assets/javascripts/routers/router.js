@@ -6,7 +6,11 @@ GoodThings.Routers.GoodRouter = Backbone.Router.extend({
 	},
 
 	routes: {
-		'': 'index'
+		'books': 'index',
+		'books/:id': 'show',
+		'posts/:id/edit': 'edit',
+		'posts/new' : 'new
+		'
 	},
 
 	index: function(){
