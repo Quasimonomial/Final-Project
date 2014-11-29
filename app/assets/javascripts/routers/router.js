@@ -24,6 +24,12 @@ GoodThings.Routers.GoodRouter = Backbone.Router.extend({
 		this._swapView(showView)
 	},
 
+	new: function(){
+		console.log("routing to new page")
+		var newView = new GoodThings.Views.BookForm();
+		this._swapView(newView);
+	},
+
 	_swapView: function(view){
 		this.currentView && this.currentView.remove();
 		this.currentView = view;
