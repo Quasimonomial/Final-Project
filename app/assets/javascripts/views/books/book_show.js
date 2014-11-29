@@ -6,7 +6,7 @@ GoodThings.Views.BookShow = Backbone.View.extend({
 	},
 
 	render: function(){
-		content = template();
+		var content = template();
 
 		this.$el.html(content);
 		
