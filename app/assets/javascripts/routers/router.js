@@ -8,15 +8,20 @@ GoodThings.Routers.GoodRouter = Backbone.Router.extend({
 	routes: {
 		'books': 'index',
 		'books/:id': 'show',
-		'posts/:id/edit': 'edit',
-		'posts/new' : 'new
-		'
+		'books/:id/edit': 'edit',
+		'books/new' : 'new'
 	},
 
 	index: function(){
 		console.log("reaching index");
 		var indexView = new GoodThings.Views.BookIndex();
 		this._swapView(indexView);
+	},
+
+	show: function(){
+		console.log("routing to show page");
+		var showView = new GoodThings.Views.BookShow();
+		this._swapView(showView)
 	},
 
 	_swapView: function(view){
