@@ -1,0 +1,1 @@
+json.extract! @book_status, :id, :user_id, :book_id, :updated_at
