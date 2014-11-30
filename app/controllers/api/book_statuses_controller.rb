@@ -15,7 +15,10 @@ module Api
     end
 
     def show
-      @book_status = BookStatus.find(params[:id])
+      #@book_status = BookStatus.find(params[:id])
+      #consider that we actually want to call show with a given ID
+      #current_user.book_statuses.find_by_book_id(params[:book_status][:book_id]);
+      @book_status = current_user.book_statuses.find_by_book_id(params[:book_statuses][:book_id])
 
       if @book_status
         render :show
