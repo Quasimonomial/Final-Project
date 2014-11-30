@@ -10,7 +10,13 @@ module API
     end
 
     def show
+      @book_status = BookStatus.find(params[:id])
 
+      if @book_status
+        render :show
+      else
+        render json: ["Unable to find that status"], status: 403
+      end
     end
 
     def update
@@ -30,7 +36,7 @@ module API
 
     private
     def book_status_params
-      params.require(:board_status).permit(:book_id, :status)
+      params.require(:book_status).permit(:book_id, :status)
     end
   end
 end
