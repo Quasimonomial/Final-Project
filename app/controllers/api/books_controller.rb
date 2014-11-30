@@ -1,6 +1,5 @@
 module Api
   class BooksController < ApiController
-
     def index #actually might want to delete this later if there are a lot of books
       @books = Book.all
       render json: @books
@@ -13,14 +12,6 @@ module Api
       else
         render json: @book.errors.full_messages, status: :unprocessable_entity
       end
-    end
-
-    def new
-      #dont need it, leaving it here so I can remember what these are for now
-    end
-    
-    def edit
-      #editing edits that edit
     end
 
     def show

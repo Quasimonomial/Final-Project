@@ -1,16 +1,7 @@
 Rails.application.routes.draw do
   
-  # You can have the root of your site routed with "root"
-  # root 'welcome#index'
   root to: 'static_pages#root'
-  # Example of regular route:
-  #   get 'products/:id' => 'catalog#view'
 
-  # Example of named route that can be invoked with purchase_url(id: product.id)
-  #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
-
-  # Example resource route (maps HTTP verbs to controller actions automatically):
-  #   resources :products
 
   # Example resource route with options:
   #   resources :products do
@@ -30,13 +21,6 @@ Rails.application.routes.draw do
   #     resource :seller
   #   end
 
-  # Example resource route with more complex sub-resources:
-  #   resources :products do
-  #     resources :comments
-  #     resources :sales do
-  #       get 'recent', on: :collection
-  #     end
-  #   end
 
   # Example resource route with concerns:
   #   concern :toggleable do
@@ -56,5 +40,6 @@ Rails.application.routes.draw do
 
   namespace :api, defaults: {format: :json} do
     resources :books
+    resources :book_statuses
   end
 end
