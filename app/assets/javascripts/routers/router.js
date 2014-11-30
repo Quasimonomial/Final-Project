@@ -6,14 +6,14 @@ GoodThings.Routers.GoodRouter = Backbone.Router.extend({
 	},
 
 	routes: {
-		'books': 'index',
-		'books/new' : 'new',
-		'books/:id': 'show',
-		'books/:id/edit': 'edit'
+		'books': 'bookIndex',
+		'books/new' : 'bookNew',
+		'books/:id': 'bookShow',
+		'books/:id/edit': 'bookEdit'
 
 	},
 
-	index: function(){
+	bookIndex: function(){
 		console.log("reaching index");
 		GoodThings.books.fetch();
 		console.log(GoodThings.books);
@@ -23,7 +23,7 @@ GoodThings.Routers.GoodRouter = Backbone.Router.extend({
 		this._swapView(indexView);
 	},
 
-	show: function(id){
+	bookShow: function(id){
 		var book = GoodThings.books.getOrFetch(id);
 		console.log("routing to show page");
 		var showView = new GoodThings.Views.BookShow({
@@ -33,7 +33,7 @@ GoodThings.Routers.GoodRouter = Backbone.Router.extend({
 		this._swapView(showView)
 	},
 
-	new: function(){
+	bookNew: function(){
 		console.log("routing to new page");
 		var newBook = new GoodThings.Models.Book();
 		var newView = new GoodThings.Views.BookForm({
@@ -43,7 +43,7 @@ GoodThings.Routers.GoodRouter = Backbone.Router.extend({
 		this._swapView(newView);
 	},
 
-	edit: function(id){
+	bookEdit: function(id){
 		console.log("routing to edit page");
 		var book = GoodThings.books.getOrFetch(id);
 		var editView = new GoodThings.Views.BookForm({
