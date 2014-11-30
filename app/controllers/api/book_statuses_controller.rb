@@ -1,4 +1,4 @@
-module API
+module Api
   class BookStatusesController < ApiController
     def create
       @book_status = current_user.book_statuses.new(book_status_params)
@@ -7,6 +7,11 @@ module API
       else
         render json: @book_status.errors.full_messages, status: :unprocessable_entity
       end
+    end
+
+    def index
+      @book_statuses = BookStatus.all
+      render json: @book_statuses
     end
 
     def show
