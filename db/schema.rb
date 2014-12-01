@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141201051644) do
+ActiveRecord::Schema.define(version: 20141201181359) do
 
   create_table "book_statuses", force: true do |t|
     t.integer  "book_id",    null: false
@@ -48,6 +48,16 @@ ActiveRecord::Schema.define(version: 20141201051644) do
   end
 
   add_index "bookshelves", ["user_id"], name: "index_bookshelves_on_user_id"
+
+  create_table "shelvings", force: true do |t|
+    t.integer  "book_id",      null: false
+    t.integer  "bookshelf_id", null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "shelvings", ["book_id"], name: "index_shelvings_on_book_id"
+  add_index "shelvings", ["bookshelf_id"], name: "index_shelvings_on_bookshelf_id"
 
   create_table "users", force: true do |t|
     t.string   "email",           null: false
