@@ -3,9 +3,11 @@
 <p> Rendering Bookshelves </p>
 <ul>
 	<% bookshelves.each(function (bookshelf) { %>
+	<li>
 		<a href = '#/bookshelves/<%= bookshelf.id%>'> <%= bookshelf.escape('title') %> </a><br>
 		<a href="/#/bookshelves/<%= bookshelf.id %>/edit">edit</a>
 	<% }); %>
+	</li>
 </ul>
 <a href="/#/bookshelves/new">Create New Bookshelf</a><br>
 <a href="/#">Back to Primary Index</a>

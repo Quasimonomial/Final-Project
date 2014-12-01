@@ -1,1 +1,7 @@
-<h1>This is a bookshelf look at it</h1>
+<h2>This is a bookshelf look at it</h2>
+
+<h1> <%= bookshelf.escape("title") %> </h1>
+<p> <%= bookshelf.escape("description")%> </p>
+
+<a href="/#/bookshelves/<%=bookshelf.id%>/edit">Edit this bookshelf</a><br>
+<a href="/#/bookshelves">Back to index</a>

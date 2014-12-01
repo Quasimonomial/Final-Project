@@ -73,7 +73,10 @@ GoodThings.Routers.GoodRouter = Backbone.Router.extend({
 	},
 
 	bookshelfShow: function(id){
-		var showView = new GoodThings.Views.BookshelfShow();
+		var bookshelf = GoodThings.bookshelves.getOrFetch(id);
+		var showView = new GoodThings.Views.BookshelfShow({
+			model: bookshelf
+		});
 		this._swapView(showView);
 	},
 
