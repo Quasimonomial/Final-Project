@@ -10,7 +10,11 @@ GoodThings.Routers.GoodRouter = Backbone.Router.extend({
 		'books': 'bookIndex',
 		'books/new' : 'bookNew',
 		'books/:id': 'bookShow',
-		'books/:id/edit': 'bookEdit'
+		'books/:id/edit': 'bookEdit',
+		'bookshelves': 'bookshelvesIndex',
+		'bookshelves/new': 'bookshelfNew',
+		'bookshelves/:id': 'bookshelfShow',
+		'bookshelves/:id/edit': 'bookshelfEdit'
 
 	},
 
