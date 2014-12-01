@@ -1,1 +1,16 @@
 <h1>This is a bookshelves form</h1>
+
+<form>
+	<ul class="errors">
+	</ul>
+	<label>Title:
+		<input type="text" name="title" value="<%= bookshelf.escape("title") %>" >
+	</label>
+	<label>Description:
+		<input type="text" name="description" value="<%= bookshelf.escape("description") %>" >
+	</label>
+	
+	<input type="submit">
+</form>
+
+<a href="/#/bookshelves">Back to Index</a>

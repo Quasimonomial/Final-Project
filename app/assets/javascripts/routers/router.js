@@ -72,18 +72,26 @@ GoodThings.Routers.GoodRouter = Backbone.Router.extend({
 		this._swapView(indexView);
 	},
 
-	bookshelfShow: function(){
+	bookshelfShow: function(id){
 		var showView = new GoodThings.Views.BookshelfShow();
 		this._swapView(showView);
 	},
 
-	bookshelfEdit: function(){
-		var editView = new GoodThings.Views.BookshelfForm();
+	bookshelfEdit: function(id){
+		var bookshelf = GoodThings.bookshelves.getOrFetch(id);
+		var editView = new GoodThings.Views.BookshelfForm({
+			collection: GoodThings.bookshelves,
+			model: bookshelf
+		});
 		this._swapView(editView);
 	},
 
 	bookshelfNew: function(){
-		var newView = new GoodThings.Views.BookshelfForm();
+		var newBookshelf = new GoodThings.Models.Bookshelf();
+		var newView = new GoodThings.Views.BookshelfForm({
+			collection: GoodThings.bookshelves,
+			model: newBookshelf
+		});
 		this._swapView(newView);
 	},
 

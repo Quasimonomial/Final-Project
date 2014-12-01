@@ -3,7 +3,7 @@ GoodThings.Views.BookshelfForm = Backbone.View.extend({
 
 	render: function(){
 		var content = this.template({
-		
+			bookshelf: this.model
 		});
 
 		this.$el.html(content);
