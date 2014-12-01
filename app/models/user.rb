@@ -20,6 +20,13 @@ class User < ActiveRecord::Base
   after_initialize :ensure_session_token
 
   has_many(
+    :bookshelves,
+    class_name: "Bookshelf",
+    foreign_key: :user_id,
+    primary_key: :id
+  )
+
+  has_many(
     :book_statuses,
     class_name: "BookStatus",
     foreign_key: :user_id,
