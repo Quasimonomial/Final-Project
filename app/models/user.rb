@@ -27,8 +27,8 @@ class User < ActiveRecord::Base
   )
 
   has_many(
-    :book_statuses,
-    class_name: "BookStatus",
+    :book_readerships,
+    class_name: "BookReadership",
     foreign_key: :user_id,
     primary_key: :id
   )

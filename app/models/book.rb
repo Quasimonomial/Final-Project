@@ -23,10 +23,9 @@ class Book < ActiveRecord::Base
 
   #oh we can have a function that takes a string of an authors name, underscores it, and stores it in the database....and when pulled up from the database, we can capitalize it again?  Or enforce similar capi\talizations...yeah we'll just add the author id column later this will work
   has_many(
-    :book_statuses,
-    class_name: "BookStatus",
-    foreign_key: :book_id,
+    :book_readerships,
+    class_name: "BookReadership",
+    foreign_Key: :book_id,
     primary_key: :id
   )
-
 end

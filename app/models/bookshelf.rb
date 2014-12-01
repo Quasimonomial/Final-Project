@@ -19,4 +19,10 @@ class Bookshelf < ActiveRecord::Base
     foreign_key: :user_id,
     primary_key: :id
   )
+  has_many(
+    :book_readerships,
+    class_name: "BookReadership",
+    foreign_key: :bookshelf_id,
+    primary_key: :id
+  )
 end
