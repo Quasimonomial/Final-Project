@@ -6,7 +6,6 @@ GoodThings.Views.BookshelvesIndex = Backbone.View.extend({
 	},
 
 	render: function () {
-		console.log('rendering index');
 		var content = this.template({
 			//books: this.collection
 		});
