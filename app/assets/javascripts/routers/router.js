@@ -70,6 +70,21 @@ GoodThings.Routers.GoodRouter = Backbone.Router.extend({
 		this._swapView(indexView);
 	},
 
+	bookshelfShow: function(){
+		var showView = new GoodThings.Views.BookshelfShow();
+		this._swapView(showView);
+	},
+
+	bookshelfEdit: function(){
+		var editView = new GoodThings.Views.BookshelfForm();
+		this._swapView(editView);
+	},
+
+	bookshelfNew: function(){
+		var newView = new GoodThings.Views.BookshelfForm();
+		this._swapView(newView);
+	},
+
 	_swapView: function(view){
 		this.currentView && this.currentView.remove();
 		this.currentView = view;
