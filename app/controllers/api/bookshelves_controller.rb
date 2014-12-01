@@ -25,7 +25,7 @@ module Api
     end
 
     def create
-      @bookshelf = current_user.book_statuses.new(bookshelf_params)
+      @bookshelf = current_user.bookshelves.new(bookshelf_params)
       if @bookshelf.save
         render json: @bookshelf
       else
