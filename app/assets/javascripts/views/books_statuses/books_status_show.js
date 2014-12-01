@@ -1,4 +1,4 @@
-Goodthings.Views.BookStatusShow = Backbone.View.extend({
+GoodThings.Views.BookStatusShow = Backbone.View.extend({
 	template: JST['book_statuses/show'],
 
 	initialize: function(){

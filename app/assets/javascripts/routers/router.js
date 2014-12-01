@@ -6,6 +6,7 @@ GoodThings.Routers.GoodRouter = Backbone.Router.extend({
 	},
 
 	routes: {
+		'': 'index',
 		'books': 'bookIndex',
 		'books/new' : 'bookNew',
 		'books/:id': 'bookShow',
@@ -13,10 +14,16 @@ GoodThings.Routers.GoodRouter = Backbone.Router.extend({
 
 	},
 
+	index: function(){
+		console.log("reaching root js index")
+		var indexView = new GoodThings.Views.Index();
+		this._swapView(indexView);
+	},
+
 	bookIndex: function(){
 		console.log("reaching index");
 		GoodThings.books.fetch();
-		console.log(GoodThings.books);
+		
 		var indexView = new GoodThings.Views.BookIndex({
 			collection: GoodThings.books
 		});

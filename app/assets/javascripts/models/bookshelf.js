@@ -1,3 +1,3 @@
-Goodthings.Models.Bookshelf = Backbone.Model.extend({
+GoodThings.Models.Bookshelf = Backbone.Model.extend({
 	urlRoot:"api/bookshelves"
 });

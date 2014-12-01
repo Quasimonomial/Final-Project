@@ -1,4 +1,4 @@
-Goodthings.Views.BookStatusForm = Backbone.Views.extend({
+GoodThings.Views.BookStatusForm = Backbone.View.extend({
 	template: JST['book_statuses/form'],
 
 	initialize: function(){
