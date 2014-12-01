@@ -15,6 +15,14 @@ class BookReadership < ActiveRecord::Base
   validates :user_id, :book_id, :bookshelf_id, presence: true
   validates :status, inclusion: {in: ["read", "currently reading", "to read", 'wishlist', 'untracked']}, allow_nil: true
   validates :book_id, uniqueness: {scope: :user_id}
+  validate :validate_valid_user
+
+  def validate_valid_user
+    #returns true, validation passes
+    if self.bookshelf.id != self.user_id
+      self.errors[:user_valid] = "Failure, bookshelf does not belong to user"
+    end
+  end
 
   belongs_to(
     :book,
@@ -31,7 +39,7 @@ class BookReadership < ActiveRecord::Base
   )
 
   belongs_to(
-    :bookshelf
+    :bookshelf,
     class_name: "Bookshelf",
     foreign_key: :bookshelf_id,
     primary_key: :id
