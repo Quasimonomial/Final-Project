@@ -41,5 +41,6 @@ Rails.application.routes.draw do
   namespace :api, defaults: {format: :json} do
     resources :books
     resources :book_statuses
+    resources :book_shelves
   end
 end
