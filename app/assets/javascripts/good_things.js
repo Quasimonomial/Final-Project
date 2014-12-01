@@ -6,6 +6,7 @@ window.GoodThings = {
 	Utils: {},
 	initialize: function(){
 		GoodThings.books = new GoodThings.Collections.Books();
+		GoodThings.bookshelves = new GoodThings.Collections.Bookshelves();
 
 		new GoodThings.Routers.GoodRouter({$rootEl: $('#primary')});
 		console.log("script initializing");

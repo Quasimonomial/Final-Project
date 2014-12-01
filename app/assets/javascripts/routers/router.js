@@ -65,7 +65,10 @@ GoodThings.Routers.GoodRouter = Backbone.Router.extend({
 
 	bookshelvesIndex: function(){
 		console.log("routing to bookshelves Index");
-		var indexView = new GoodThings.Views.BookshelvesIndex();
+		GoodThings.bookshelves.fetch();
+		var indexView = new GoodThings.Views.BookshelvesIndex({
+			collection: GoodThings.bookshelves
+		});
 		this._swapView(indexView);
 	},
 

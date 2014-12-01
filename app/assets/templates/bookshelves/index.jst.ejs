@@ -1,1 +1,11 @@
 <h1>Welcomle to the Bookshelves Index</h1>
+
+<p> Rendering Bookshelves </p>
+<ul>
+	<% bookshelves.each(function (bookshelf) { %>
+		<a href = '#/bookshelves/<%= bookshelf.id%>'> <%= bookshelf.escape('title') %> </a><br>
+		<a href="/#/bookshelves/<%= bookshelf.id %>/edit">edit</a>
+	<% }); %>
+</ul>
+<a href="/#/bookshelves/new">Create New Bookshelf</a><br>
+<a href="/#">Back to Primary Index</a>
