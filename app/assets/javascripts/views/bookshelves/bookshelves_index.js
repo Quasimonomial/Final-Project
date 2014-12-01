@@ -2,7 +2,7 @@ GoodThings.Views.BookshelvesIndex = Backbone.View.extend({
 	template: JST['bookshelves/index'],
 
 	initialize: function(){
-		//this.listenTo(this.collection, 'sync', this.render)
+		this.listenTo(this.collection, 'sync', this.render)
 	},
 
 	render: function () {
