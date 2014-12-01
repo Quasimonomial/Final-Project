@@ -1,7 +1,7 @@
 module Api
   class BookshelvesController < ApiController 
     def index
-      @bookshelves = Bookshelf.all
+      @bookshelves = current_user.bookshelves
       render json: @bookshelves
     end
 
@@ -16,15 +16,22 @@ module Api
     end
 
     def update
-
+      @bookshelf = Bookshelf.find(params[:id])
+      if @bookshelf.update_attributes(book_params)
+        render json: @bookshelf
+      else
+        render json: [@bookshelf.errors.full_messages, status: 422]
+      end
     end
 
     def create
-
+      
     end
 
     def destroy
-      
+      @bookshelf = Bookshelves.find(params[:id])
+      @bookshelf.try(:destroy)
+      render json: {message: 'Bookshelf Destroyed'}
     end
   end
 end
