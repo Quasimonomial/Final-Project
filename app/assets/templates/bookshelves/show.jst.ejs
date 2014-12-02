@@ -3,5 +3,16 @@
 <h1> <%= bookshelf.escape("title") %> </h1>
 <p> <%= bookshelf.escape("description")%> </p>
 
+
+<form>
+	<p> Add a Book! </p>
+	<label>Add book with ID of:
+		<input type = "text" name="book_id">
+	</label>
+	<input type = "submit">
+</form>
+
+<br>
+
 <a href="/#/bookshelves/<%=bookshelf.id%>/edit">Edit this bookshelf</a><br>
 <a href="/#/bookshelves">Back to index</a>
