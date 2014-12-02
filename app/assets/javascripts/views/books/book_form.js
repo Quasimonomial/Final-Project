@@ -2,7 +2,8 @@ GoodThings.Views.BookForm = Backbone.View.extend({
 	template: JST['books/form'],
 
 	events: {
-		'submit form.traditional': 'submit'
+		'submit form.traditional': 'submit',
+		'submit form.isbn': 'useIsbn'
 	},
 
 	initialize: function(){
@@ -42,5 +43,62 @@ GoodThings.Views.BookForm = Backbone.View.extend({
 			success: success,
 			error: errors.bind(this)
 		})
-	}
+	},
+
+	useIsbn: function(event){
+		event.preventDefault();
+		console.log("Generating Data from ISBN");
+		var isbn = $(event.target).serializeJSON().isbn;
+		var googleUrl = "https://www.googleapis.com/books/v1/volumes?q=isbn:" + isbn
+		console.log(isbn);
+		console.log(googleUrl);
+		var that = this;
+		$.ajax({
+		    type:     "GET",
+		    url:      googleUrl,
+		    dataType: "json",
+		    success: function(data){
+		        console.log(data);
+		        that.parseBookData(data);
+		    }
+		});
+	},
+
+	parseBookData: function(data){
+		console.log("parsing book data")
+
+		function getIsbn10(industryIdentifiers){
+			for(var key in industryIdentifiers){
+				if (industryIdentifiers[key].type === "ISBN_10"){
+					return industryIdentifiers[key].identifier;
+				}
+			}
+		};
+
+		function getIsbn13(industryIdentifiers){
+			for(var key in industryIdentifiers){
+				if (industryIdentifiers[key].type === "ISBN_13"){
+					return industryIdentifiers[key].identifier;
+				}
+			}
+		};
+
+		var firstResult = data.items[0];
+		var bookTitle = firstResult.volumeInfo.title;
+		var bookAuthor = firstResult.volumeInfo.authors[0];
+		var bookPublicationDate = firstResult.volumeInfo.publishedDate;
+		var bookDescription = firstResult.volumeInfo.description;
+		var bookIsbn10 = getIsbn10(firstResult.volumeInfo.industryIdentifiers);
+		var bookIsbn13 = getIsbn13(firstResult.volumeInfo.industryIdentifiers);
+		var bookPageCount = firstResult.volumeInfo.pageCount;
+
+		console.log(bookTitle);
+		console.log(bookAuthor);
+		console.log(bookPublicationDate);
+		console.log(bookDescription);
+		console.log(bookIsbn10);
+		console.log(bookIsbn13);
+		console.log(bookPageCount);
+	}	
+
 });
