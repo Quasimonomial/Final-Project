@@ -26,6 +26,6 @@ GoodThings.Views.BookshelfShow = Backbone.View.extend({
 
 		console.log("adding book");
 		var book_id = $(event.target).serializeJSON().book_id;
-		this.model.add_book_to_shelf();
+		this.model.add_book_to_shelf(book_id);
 	}
 });

@@ -21,10 +21,15 @@ GoodThings.Models.Bookshelf = Backbone.Model.extend({
 	add_book_to_shelf: function(book_id){
 		$.ajax({
 			url: "/api/book_readerships",
-			type: "POST",
+			method: "POST",
+  			dataType: 'json',
 			data: {
-				book_id: book_id,
-				bookshelf_id: this.id
+				book_readership:{
+					book_id: book_id,
+					bookshelf_id: this.id
+				}
+				// "book_readership:book_id": book_id,
+				// "book_readershipbookshelf_id]": this.id
 			},
 			success: function(){
 				console.log("Successfully added book to shelf");
