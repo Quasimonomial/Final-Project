@@ -18,8 +18,19 @@ GoodThings.Models.Bookshelf = Backbone.Model.extend({
 		return response;
 	},
 	
-	add_book_to_shelf: function(){
+	add_book_to_shelf: function(book_id){
+		$.ajax({
+			url: "/api/book_readerships",
+			type: "POST",
+			data: {
+				book_id: book_id,
+				bookshelf_id: this.id
+			},
+			success: function(){
+				console.log("Successfully added book to shelf");
 
+			}
+		});
 	},
 
 	remove_book_from_shelf: function(){

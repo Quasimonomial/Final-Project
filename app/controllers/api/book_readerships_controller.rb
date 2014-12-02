@@ -29,6 +29,7 @@ module Api
         render json: @book_readership
       else
         render json: @book_readership.errors.full_messages, status: :unprocessable_entity
+      end
     end
 
     def destroy
