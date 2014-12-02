@@ -19,7 +19,7 @@ class BookReadership < ActiveRecord::Base
 
   def validate_valid_user
     #returns true, validation passes
-    if self.bookshelf.id != self.user_id
+    if self.bookshelf.user_id != self.user_id
       self.errors[:user_valid] = "Failure, bookshelf does not belong to user"
     end
   end

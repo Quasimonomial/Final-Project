@@ -3,6 +3,13 @@
 <h1> <%= bookshelf.escape("title") %> </h1>
 <p> <%= bookshelf.escape("description")%> </p>
 
+<ul>
+	<% bookshelf.books().each(function(book){ %>
+		<li>
+			<a href="/#/books/<%= book.id %>"> <%= book.escape("title")%> </a>
+		</li>	
+	<% }); %>
+</ul>
 
 <form>
 	<p> Add a Book! </p>

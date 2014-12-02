@@ -25,7 +25,7 @@ class Book < ActiveRecord::Base
   has_many(
     :book_readerships,
     class_name: "BookReadership",
-    foreign_Key: :book_id,
+    foreign_key: :book_id,
     primary_key: :id
   )
 end

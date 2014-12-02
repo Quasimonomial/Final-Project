@@ -1,6 +1,10 @@
 GoodThings.Collections.Books = Backbone.Collection.extend({
 	url: "api/books",
 	model: GoodThings.Models.Book,
+	
+	// initialize: function(models, options){
+	// 	//this.bookshelf = options.bookshelf;
+	// },
 
 	getOrFetch: function (id) {
 		console.log("getting or fetching");

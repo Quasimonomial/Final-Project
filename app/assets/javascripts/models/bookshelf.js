@@ -8,6 +8,15 @@ GoodThings.Models.Bookshelf = Backbone.Model.extend({
 
 		return this._books;
 	},
+
+	parse: function(response){
+		if(response.books){
+			this.books().set(response.books, {parse: true});
+			delete response.books;
+		}
+
+		return response;
+	},
 	
 	add_book_to_shelf: function(){
 
@@ -15,5 +24,5 @@ GoodThings.Models.Bookshelf = Backbone.Model.extend({
 
 	remove_book_from_shelf: function(){
 
-	},
+	}
 });
