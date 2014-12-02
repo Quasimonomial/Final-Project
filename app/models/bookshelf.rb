@@ -25,4 +25,10 @@ class Bookshelf < ActiveRecord::Base
     foreign_key: :bookshelf_id,
     primary_key: :id
   )
+
+  has_many(
+    :books,
+    through: :book_readerships,
+    source: :book
+  )
 end
