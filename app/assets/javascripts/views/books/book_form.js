@@ -2,7 +2,7 @@ GoodThings.Views.BookForm = Backbone.View.extend({
 	template: JST['books/form'],
 
 	events: {
-		'submit form': 'submit'
+		'submit form.traditional': 'submit'
 	},
 
 	initialize: function(){
