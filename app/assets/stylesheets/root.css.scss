@@ -1,10 +1,13 @@
 
 
+
 #sidebar{
 	float: left;
-	padding-right: 40px
+	padding-right: 40px;
+
 }
 
-#primary {
-  overflow: auto;
+#content {
+	float: left;
+	overflow: auto;
 }

@@ -2,6 +2,9 @@ GoodThings.Routers.GoodRouter = Backbone.Router.extend({
 	initialize: function(options){
 		this.$rootEl = options.$rootEl
 		console.log("Starting Router");
+		this.bookshelvesIndexView = new GoodThings.Views.BookshelvesIndex({
+			collection: GoodThings.bookshelves
+		});
 	},
 
 	routes: {
@@ -67,18 +70,18 @@ GoodThings.Routers.GoodRouter = Backbone.Router.extend({
 		console.log("routing to bookshelves Index");
 		GoodThings.bookshelves.fetch();
 		var mainIndexView = new GoodThings.Views.Index();
-		this.indexView = new GoodThings.Views.BookshelvesIndex({
-			collection: GoodThings.bookshelves
-		});
-		this._swapView(mainIndexView, this.indexView);
+		
+		this._swapView(mainIndexView, {sidebar: true});
 	},
 
 	bookshelfShow: function(id){
 		var bookshelf = GoodThings.bookshelves.getOrFetch(id);
+	
+
 		var showView = new GoodThings.Views.BookshelfShow({
 			model: bookshelf
 		});
-		this._swapView(showView);
+		this._swapView(showView, {sidebar: true});
 	},
 
 	bookshelfEdit: function(id){
@@ -99,24 +102,23 @@ GoodThings.Routers.GoodRouter = Backbone.Router.extend({
 		this._swapView(newView);
 	},
 
-	_swapSideBar: function(view){
-		if(this.sidebarView === view){
-			console.log("no sidebar change");
-			return;
-		}
-		this.sidebarView && this.sidebarView.remove();
-		if(view){
-			this.sidebarView = view;
-			$('#sidebar').html(view.render().$el);
+	_swapSideBar: function(options){
+		//this.sidebarView && this.sidebarView.remove();
+		if(options.sidebar){
+			// this.sidebarView = this.bookshelvesIndexView;
+			$('#sidebar').html(this.bookshelvesIndexView.render().$el);
 		}else{
-			$('#sidebar').html();
+			$('#sidebar').empty();
 		}
 	},
 
-	_swapView: function(view, sidebarView){
+	_swapView: function(view, options){
+		if(typeof options === "undefined"){
+			options = {sidebar: false}
+		}
 		this.currentView && this.currentView.remove();
 		this.currentView = view;
 		$('#content').html(view.render().$el); //remember to make renders all return this
-		this._swapSideBar(sidebarView);
+		this._swapSideBar(options);
  	}
 });
