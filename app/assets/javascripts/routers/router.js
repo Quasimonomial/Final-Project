@@ -90,7 +90,7 @@ GoodThings.Routers.GoodRouter = Backbone.Router.extend({
 			collection: GoodThings.bookshelves,
 			model: bookshelf
 		});
-		this._swapView(editView);
+		this._swapView(editView, {sidebar: true});
 	},
 
 	bookshelfNew: function(){
@@ -99,7 +99,7 @@ GoodThings.Routers.GoodRouter = Backbone.Router.extend({
 			collection: GoodThings.bookshelves,
 			model: newBookshelf
 		});
-		this._swapView(newView);
+		this._swapView(newView, {sidebar: true});
 	},
 
 	_swapSideBar: function(options){
