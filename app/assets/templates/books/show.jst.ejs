@@ -1,11 +1,18 @@
 <% console.log("Rendering show template");%>
 <% console.log(book.toJSON()); %>
 
-<h3>This is a Show page</h3>
+<h1> <%= book.escape("title") %> </h1>
 
-<p> <%= book.id %> </p>
-<p> <%= book.escape("title") %> </p>
-<p> <%= book.escape("author") %> </p>
+<img src="http://covers.openlibrary.org/b/isbn/<%= book.escape('isbn10')%>-M.jpg" >
+
+<p> Author:            <%= book.escape("author") %> </p>
+<p> Publication Date:  <%= book.escape("published_date") %> </p>
+<p> Page Count:            <%= book.escape("page_count") %> </p>
+<p> ISBN-10:            <%= book.escape("isbn10") %> </p>
+<p> ISBN-13:            <%= book.escape("isbn13") %> </p>
+
+<h3>Summary: </h3>
+<p><%= book.escape("description") %> </p>
 
 <a href='/#/books/<%= book.id %>/edit'>Edit this book</a><br>
 <a href='/#/books'>Back To Index</a>

@@ -28,6 +28,7 @@ gem 'spring',        group: :development
 
 
 gem 'bootstrap-sass'
+gem 'sprockets'
 
 gem 'backbone-on-rails'
  

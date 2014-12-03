@@ -1,14 +1,31 @@
 <h3>This is an Index</h3>
 
 <p> Rendering Books: </p> 
-<ul>
+<table border="solid">
+	<tr>
+		<th></th>
+		<th> Title </th>
+		<th> Author </th>
+		<th> Publication Date </th>
+		<th> Page Count </th>
+		<th> ISBN </th>
+	</tr>
 	<% books.each(function (book) { %>
-		<li>
-			<a href = '#/books/<%= book.id%>'> <%= book.escape('title') %> </a><br>
-			<a href="/#/books/<%= book.id %>/edit">edit</a>
-		</li>
+		<tr>
+			<td> <img src="http://covers.openlibrary.org/b/isbn/<%= book.escape('isbn10')%>-S.jpg"> </td>
+			<td><a href = '#/books/<%= book.id%>'> <%= book.escape('title') %> </a></td>
+
+			<td><%= book.escape("author") %></td>
+			<td><%= book.escape("published_date") %></td>
+			<td><%= book.escape("page_count") %></td>
+			<td><%= book.escape("isbn13") %></td>
+		</tr>
 	<% }); %>
-</ul>
+</table>
 
 <a href="/#/books/new">Create new Book</a><br>
 <a href="/#">Back to Primary Index</a>
+
+
+
+

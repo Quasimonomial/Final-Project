@@ -7,20 +7,23 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-<%= logged_in? %>
-<%= @current_user %>
+	<%= render partial: "layouts/header" %>
+	<br>
+	<br>
+	<br>
 
-<% if logged_in? %>
-  <%= current_user.email %>
-  <%= button_to "Log Out", session_url, :method => :delete %>
-<% else %>
-  <%= link_to "Log In", new_session_url %>
-  <%= link_to "Sign Up", new_user_url %>
-<% end %>
 
-<%= render "layouts/errors" %>
 
-<%= yield %>
+	<% if logged_in? %>
+	  <%= button_to "Log Out", session_url, :method => :delete %>
+	<% else %>
+	  <%= link_to "Log In", new_session_url %>
+	  <%= link_to "Sign Up", new_user_url %>
+	<% end %>
+
+	<%= render "layouts/errors" %>
+
+	<%= yield %>
 
 </body>
 </html>

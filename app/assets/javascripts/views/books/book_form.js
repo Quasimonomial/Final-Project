@@ -70,6 +70,7 @@ GoodThings.Views.BookForm = Backbone.View.extend({
 
 		this.model.generate_by_isbn(firstResult);
 		this.model.save();
+		Backbone.history.navigate("#/books", {trigger: true});
 	}	
 
 });
