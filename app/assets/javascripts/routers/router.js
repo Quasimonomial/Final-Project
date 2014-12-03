@@ -66,10 +66,11 @@ GoodThings.Routers.GoodRouter = Backbone.Router.extend({
 	bookshelvesIndex: function(){
 		console.log("routing to bookshelves Index");
 		GoodThings.bookshelves.fetch();
-		var indexView = new GoodThings.Views.BookshelvesIndex({
+		var mainIndexView = new GoodThings.Views.Index();
+		this.indexView = new GoodThings.Views.BookshelvesIndex({
 			collection: GoodThings.bookshelves
 		});
-		this._swapView(indexView);
+		this._swapView(mainIndexView, this.indexView);
 	},
 
 	bookshelfShow: function(id){
@@ -98,9 +99,24 @@ GoodThings.Routers.GoodRouter = Backbone.Router.extend({
 		this._swapView(newView);
 	},
 
-	_swapView: function(view){
+	_swapSideBar: function(view){
+		if(this.sidebarView === view){
+			console.log("no sidebar change");
+			return;
+		}
+		this.sidebarView && this.sidebarView.remove();
+		if(view){
+			this.sidebarView = view;
+			$('#sidebar').html(view.render().$el);
+		}else{
+			$('#sidebar').html();
+		}
+	},
+
+	_swapView: function(view, sidebarView){
 		this.currentView && this.currentView.remove();
 		this.currentView = view;
 		$('#content').html(view.render().$el); //remember to make renders all return this
+		this._swapSideBar(sidebarView);
  	}
 });
