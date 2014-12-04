@@ -36,8 +36,11 @@ module Api
     end
 
     def destroy
-      @book_readership = BookReadership.find(params[:id])
-      @book_readership.try(:destroy)
+      @book_readership = BookReadership.where(bookshelf_id: params[:book_readership][:bookshelf_id], book_id: params[:book_readership][:book_id]).first
+      if @book_readership#.try(:destroy)
+        p @book_readership
+        @book_readership.destroy
+      end
       render json: {}
     end
 

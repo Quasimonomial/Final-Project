@@ -2,8 +2,9 @@ GoodThings.Views.BookshelfShow = Backbone.View.extend({
 	template: JST["bookshelves/show"],
 
 	events: {
-		"submit form#loadById": "addBookshelf",
-		"submit form.loadByIsbn": "addBookViaIsbn"
+		"submit form#loadById": "addToBookshelf",
+		"submit form.loadByIsbn": "addBookViaIsbn",
+		"click a.removeFromShelf": "removeBookFromShelf"
 	},
 
 	initialize: function(){
@@ -23,7 +24,7 @@ GoodThings.Views.BookshelfShow = Backbone.View.extend({
 		return this;
 	},
 
-	addBookshelf: function(event){
+	addToBookshelf: function(event){
 		event.preventDefault();
 
 		console.log("adding book");
@@ -31,7 +32,13 @@ GoodThings.Views.BookshelfShow = Backbone.View.extend({
 		this.model.add_book_to_shelf(book_id);
 	},
 
-	// addBookshelf: function(event){
-	// 	console.log("adding book by ISBN")
-	// }
+	removeBookFromShelf: function(event){
+		event.preventDefault();
+		var $target = $(event.currentTarget);
+		console.log("removing book")
+		var book_id = $target.attr('data-id');
+		console.log(this.model)
+		this.model.removeBookFromShelf(book_id);
+	}
+
 });

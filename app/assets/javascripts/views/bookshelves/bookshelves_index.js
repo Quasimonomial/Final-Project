@@ -2,7 +2,11 @@ GoodThings.Views.BookshelvesIndex = Backbone.View.extend({
 	template: JST['bookshelves/index'],
 
 	initialize: function(){
-		this.listenTo(this.collection, 'sync', this.render)
+		this.listenTo(this.collection, 'sync destroy', this.render)
+	},
+
+	events: {
+		'click .bookshelfDelete': 'destroyShelf'
 	},
 
 	render: function () {
@@ -13,5 +17,15 @@ GoodThings.Views.BookshelvesIndex = Backbone.View.extend({
 		this.$el.html(content);
 
 		return this;
+	},
+
+	destroyShelf: function(event){
+		event.preventDefault();
+
+		var $target = $(event.currentTarget);
+		var bookshelf = this.collection.get($target.attr('data-id'));
+		console.log($target);
+		console.log($target.attr('data-id'));
+		bookshelf.destroy();
 	}
 });

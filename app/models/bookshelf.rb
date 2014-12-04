@@ -23,7 +23,8 @@ class Bookshelf < ActiveRecord::Base
     :book_readerships,
     class_name: "BookReadership",
     foreign_key: :bookshelf_id,
-    primary_key: :id
+    primary_key: :id,
+    dependent: :destroy
   )
 
   has_many(

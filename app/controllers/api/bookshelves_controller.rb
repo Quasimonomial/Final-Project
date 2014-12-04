@@ -34,7 +34,7 @@ module Api
     end
 
     def destroy
-      @bookshelf = Bookshelves.find(params[:id])
+      @bookshelf = Bookshelf.find(params[:id])
       @bookshelf.try(:destroy)
       render json: {message: 'Bookshelf Destroyed'}
     end

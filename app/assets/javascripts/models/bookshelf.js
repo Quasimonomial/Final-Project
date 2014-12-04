@@ -40,7 +40,26 @@ GoodThings.Models.Bookshelf = Backbone.Model.extend({
 		});
 	},
 
-	remove_book_from_shelf: function(){
+	removeBookFromShelf: function(book_id){
+		var shelf = this;
+
+		$.ajax({
+			url: "/api/book_readerships",
+			method: "POST",
+  			dataType: 'json',
+			data: {
+				"_method":"delete",
+				book_readership:{
+					book_id: book_id,
+					bookshelf_id: this.id
+				}
+				
+			},
+			success: function(book){
+				shelf.books().remove(book);
+				console.log("Successfully removed book to shelf");
+			}
+		});
 
 	}
 });

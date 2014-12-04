@@ -41,6 +41,7 @@ Rails.application.routes.draw do
   namespace :api, defaults: {format: :json} do
     resources :books
     resources :bookshelves
-    resources :book_readerships
+    resources :book_readerships, except: :destroy
+    delete 'book_readerships' => 'book_readerships#destroy'
   end
 end

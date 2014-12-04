@@ -3,7 +3,8 @@
 	<% bookshelves.each(function (bookshelf) { %>
 	<li>
 		<a href = '#/bookshelves/<%= bookshelf.id%>'> <%= bookshelf.escape('title') %> </a><br>
-		<a href="/#/bookshelves/<%= bookshelf.id %>/edit">edit</a>
+		<a href="/#/bookshelves/<%= bookshelf.id %>/edit">edit </a>
+		<a class="bookshelfDelete" data-id="<%= bookshelf.id%>"> delete </a>
 	<% }); %>
 	</li>
 </ul>

@@ -8,6 +8,7 @@
 		<th> Author </th>
 		<th> Publication Date </th>
 		<th> Page Count </th>
+		<th> Remove </th>
 	</tr>
 	<% bookshelf.books().each(function (book) { %>
 		<tr>
@@ -17,6 +18,7 @@
 			<td><%= book.escape("author") %></td>
 			<td><%= book.escape("published_date") %></td>
 			<td><%= book.escape("page_count") %></td>
+			<td><a class = 'removeFromShelf' data-id="<%= book.id%>"> XXX </a></td>
 		</tr>
 	<% }); %>
 </table>
