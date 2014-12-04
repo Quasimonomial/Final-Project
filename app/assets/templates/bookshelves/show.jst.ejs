@@ -1,17 +1,30 @@
-<h2>This is a bookshelf look at it</h2>
-
-<h1> <%= bookshelf.escape("title") %> </h1>
+<h3> <%= bookshelf.escape("title") %> </h3>
 <p> <%= bookshelf.escape("description")%> </p>
 
-<ul>
-	<% bookshelf.books().each(function(book){ %>
-		<li>
-			<a href="/#/books/<%= book.id %>"> <%= book.escape("title")%> </a>
-		</li>	
-	<% }); %>
-</ul>
+<table border="solid">
+	<tr>
+		<th></th>
+		<th> Title </th>
+		<th> Author </th>
+		<th> Publication Date </th>
+		<th> Page Count </th>
+	</tr>
+	<% bookshelf.books().each(function (book) { %>
+		<tr>
+			<td> <img src="http://covers.openlibrary.org/b/isbn/<%= book.escape('isbn10')%>-S.jpg"> </td>
+			<td><a href = '#/books/<%= book.id%>'> <%= book.escape('title') %> </a></td>
 
-<form>
+			<td><%= book.escape("author") %></td>
+			<td><%= book.escape("published_date") %></td>
+			<td><%= book.escape("page_count") %></td>
+		</tr>
+	<% }); %>
+</table>
+
+<br>
+<br>
+
+<form id="loadById">
 	<p> Add a Book! </p>
 	<label>Add book with ID of:
 		<input type = "text" name="book_id">
@@ -22,4 +35,3 @@
 <br>
 
 <a href="/#/bookshelves/<%=bookshelf.id%>/edit">Edit this bookshelf</a><br>
-<a href="/#/bookshelves">Back to index</a>

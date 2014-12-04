@@ -27,9 +27,7 @@ GoodThings.Routers.GoodRouter = Backbone.Router.extend({
 	},
 
 	bookIndex: function(){
-		console.log("reaching index");
-		GoodThings.books.fetch();
-		
+		console.log("reaching index");		
 		var indexView = new GoodThings.Views.BookIndex({
 			collection: GoodThings.books
 		});

@@ -19,6 +19,8 @@ GoodThings.Models.Bookshelf = Backbone.Model.extend({
 	},
 	
 	add_book_to_shelf: function(book_id){
+		var shelf = this;
+
 		$.ajax({
 			url: "/api/book_readerships",
 			method: "POST",
@@ -31,9 +33,9 @@ GoodThings.Models.Bookshelf = Backbone.Model.extend({
 				// "book_readership:book_id": book_id,
 				// "book_readershipbookshelf_id]": this.id
 			},
-			success: function(){
+			success: function(book){
+				shelf.books().add(book);
 				console.log("Successfully added book to shelf");
-
 			}
 		});
 	},

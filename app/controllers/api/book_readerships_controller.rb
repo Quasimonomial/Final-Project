@@ -8,7 +8,7 @@ module Api
     def create
       @book_readership = current_user.book_readerships.new(book_readership_params)
       if @book_readership.save
-        render json: @book_readership
+        render json: @book_readership.book
       else
         render json: @book_readership.errors.full_messages, status: :unprocessable_entity
       end
