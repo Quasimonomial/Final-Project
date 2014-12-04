@@ -6,6 +6,8 @@ module Api
     end
 
     def create
+      # puts "test" if book_readership_params[:isbn]
+      # puts "test2" if book_readership_params[:book_id]
       @book_readership = current_user.book_readerships.new(book_readership_params)
       BookReadership.clear_other_shelves(@book_readership.book_id)
       if @book_readership.save
@@ -20,7 +22,7 @@ module Api
       if @book_readership
         render :show
       else
-        rende json: ["unable to find readership"], status: 403
+        render json: ["unable to find readership"], status: 403
       end
     end
 
@@ -41,7 +43,7 @@ module Api
 
     private
     def book_readership_params
-      params.require(:book_readership).permit(:bookshelf_id, :book_id, :status)
+      params.require(:book_readership).permit(:bookshelf_id, :book_id, :status, :isbn)
     end
   end
 end
