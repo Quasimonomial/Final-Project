@@ -17,6 +17,13 @@ class BookReadership < ActiveRecord::Base
   validates :book_id, uniqueness: {scope: :user_id}
   validate :validate_valid_user
 
+  def self.clear_other_shelves(book_id)
+    enemy_readership = BookReadership.find_by_book_id(book_id)
+    #enemy_readerships.each do |readership|
+    enemy_readership.delete if enemy_readership
+    #end
+  end
+
   def validate_valid_user
     #returns true, validation passes
     if self.bookshelf.user_id != self.user_id

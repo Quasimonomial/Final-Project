@@ -7,6 +7,7 @@ module Api
 
     def create
       @book_readership = current_user.book_readerships.new(book_readership_params)
+      BookReadership.clear_other_shelves(@book_readership.book_id)
       if @book_readership.save
         render json: @book_readership.book
       else
