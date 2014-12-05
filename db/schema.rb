@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20141202191317) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "book_readerships", force: true do |t|
     t.integer  "user_id",      null: false
     t.integer  "book_id",      null: false
@@ -22,10 +25,10 @@ ActiveRecord::Schema.define(version: 20141202191317) do
     t.datetime "updated_at"
   end
 
-  add_index "book_readerships", ["book_id"], name: "index_book_readerships_on_book_id"
-  add_index "book_readerships", ["bookshelf_id"], name: "index_book_readerships_on_bookshelf_id"
-  add_index "book_readerships", ["status"], name: "index_book_readerships_on_status"
-  add_index "book_readerships", ["user_id"], name: "index_book_readerships_on_user_id"
+  add_index "book_readerships", ["book_id"], name: "index_book_readerships_on_book_id", using: :btree
+  add_index "book_readerships", ["bookshelf_id"], name: "index_book_readerships_on_bookshelf_id", using: :btree
+  add_index "book_readerships", ["status"], name: "index_book_readerships_on_status", using: :btree
+  add_index "book_readerships", ["user_id"], name: "index_book_readerships_on_user_id", using: :btree
 
   create_table "book_statuses", force: true do |t|
     t.integer  "book_id",    null: false
@@ -35,7 +38,7 @@ ActiveRecord::Schema.define(version: 20141202191317) do
     t.datetime "updated_at"
   end
 
-  add_index "book_statuses", ["user_id"], name: "index_book_statuses_on_user_id"
+  add_index "book_statuses", ["user_id"], name: "index_book_statuses_on_user_id", using: :btree
 
   create_table "books", force: true do |t|
     t.string   "title"
@@ -49,8 +52,8 @@ ActiveRecord::Schema.define(version: 20141202191317) do
     t.string   "isbn13"
   end
 
-  add_index "books", ["author"], name: "index_books_on_author"
-  add_index "books", ["title"], name: "index_books_on_title"
+  add_index "books", ["author"], name: "index_books_on_author", using: :btree
+  add_index "books", ["title"], name: "index_books_on_title", using: :btree
 
   create_table "bookshelves", force: true do |t|
     t.string   "title",       null: false
@@ -60,7 +63,7 @@ ActiveRecord::Schema.define(version: 20141202191317) do
     t.datetime "updated_at"
   end
 
-  add_index "bookshelves", ["user_id"], name: "index_bookshelves_on_user_id"
+  add_index "bookshelves", ["user_id"], name: "index_bookshelves_on_user_id", using: :btree
 
   create_table "shelvings", force: true do |t|
     t.integer  "book_id",      null: false
@@ -69,8 +72,8 @@ ActiveRecord::Schema.define(version: 20141202191317) do
     t.datetime "updated_at"
   end
 
-  add_index "shelvings", ["book_id"], name: "index_shelvings_on_book_id"
-  add_index "shelvings", ["bookshelf_id"], name: "index_shelvings_on_bookshelf_id"
+  add_index "shelvings", ["book_id"], name: "index_shelvings_on_book_id", using: :btree
+  add_index "shelvings", ["bookshelf_id"], name: "index_shelvings_on_bookshelf_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "email",           null: false
@@ -80,6 +83,6 @@ ActiveRecord::Schema.define(version: 20141202191317) do
     t.datetime "updated_at"
   end
 
-  add_index "users", ["email"], name: "index_users_on_email"
+  add_index "users", ["email"], name: "index_users_on_email", using: :btree
 
 end
