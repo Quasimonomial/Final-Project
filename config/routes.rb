@@ -39,9 +39,10 @@ Rails.application.routes.draw do
   resource :session
 
   namespace :api, defaults: {format: :json} do
-    resources :books
+    resources :books, only: [:create, :show, :index]
     resources :bookshelves
     resources :book_readerships, except: :destroy
     delete 'book_readerships' => 'book_readerships#destroy'
+    get 'books/isbn/:isbn' => 'books#isbn'
   end
 end

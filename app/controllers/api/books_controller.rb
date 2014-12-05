@@ -24,21 +24,30 @@ module Api
       end
     end
 
-    def update
-      @book = Book.find(params[:id])
-      if @book.update_attributes(book_params)
-        render json: @book
+    def isbn
+      @book = Book.fetch_by_isbn(params[:isbn])
+      if @book
+        render :show
       else
-        render json: [@book.errors.full_messages, status: 422]
+        render :json ["That book doesnt' exist", status: 422]
       end
     end
 
-    def destroy #definately want this to destroy books that turn out to have the same ISBN number
-      @book = Book.find(params[:id])
-      @book.destroy
-      render json: { message: 'Book Destroyed!'}
+    # def update
+    #   @book = Book.find(params[:id])
+    #   if @book.update_attributes(book_params)
+    #     render json: @book
+    #   else
+    #     render json: [@book.errors.full_messages, status: 422]
+    #   end
+    # end
 
-    end
+    # def destroy #definately want this to destroy books that turn out to have the same ISBN number
+    #   @book = Book.find(params[:id])
+    #   @book.destroy
+    #   render json: { message: 'Book Destroyed!'}
+
+    # end
 
     private
     def book_params

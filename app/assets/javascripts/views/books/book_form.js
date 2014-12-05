@@ -46,31 +46,30 @@ GoodThings.Views.BookForm = Backbone.View.extend({
 	},
 
 	useIsbn: function(event){
+		var that = this;
 		event.preventDefault();
 		console.log("Generating Data from ISBN");
 		var isbn = $(event.target).serializeJSON().isbn;
-		var googleUrl = "https://www.googleapis.com/books/v1/volumes?q=isbn:" + isbn
 		console.log(isbn);
-		console.log(googleUrl);
-		var that = this;
 		$.ajax({
-		    type:     "GET",
-		    url:      googleUrl,
-		    dataType: "json",
-		    success: function(data){
-		        console.log(data);
-		        that.parseBookData(data);
-		    }
+			 url: "/api/books/isbn/" + isbn,
+			method: "get",
+  			dataType: 'json',
+			success: function(book){
+				console.log("Successfully found book");
+				console.log(book);
+				Backbone.history.navigate("#/books/"+ book.id, {trigger: true});
+			}
 		});
-	},
+	}
 
-	parseBookData: function(data){
-		console.log("parsing book data")
-		var firstResult = data.items[0];
+	// parseBookData: function(data){
+	// 	console.log("parsing book data")
+	// 	var firstResult = data.items[0];
 
-		this.model.generate_by_isbn(firstResult);
-		this.model.save();
-		Backbone.history.navigate("#/books", {trigger: true});
-	}	
+	// 	this.model.generate_by_isbn(firstResult);
+	// 	this.model.save();
+	// 	Backbone.history.navigate("#/books", {trigger: true});
+	// }	
 
 });
