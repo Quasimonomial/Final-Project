@@ -8,11 +8,12 @@ GoodThings.Views.BookshelfShow = Backbone.View.extend({
 	},
 
 	initialize: function(){
-		this.listenTo(this.model, 'sync', this.render);
+		this.listenTo(this.model, 'sync remove', this.render);
 		this.listenTo(this.model.books(), 'sync add remove', this.render);
 	},
 
 	render: function(){
+		console.log("rendering show");
 		// console.log(this.model);
 		// console.log(this.model.books());
 		var content = this.template({

@@ -56,7 +56,9 @@ GoodThings.Models.Bookshelf = Backbone.Model.extend({
 				
 			},
 			success: function(book){
+				console.log(book);
 				shelf.books().remove(book);
+				shelf.trigger("remove");
 				console.log("Successfully removed book to shelf");
 			}
 		});

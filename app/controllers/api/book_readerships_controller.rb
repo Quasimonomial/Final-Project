@@ -41,7 +41,8 @@ module Api
         p @book_readership
         @book_readership.destroy
       end
-      render json: {}
+      book = Book.find(params[:book_readership][:book_id])
+      render json: book
     end
 
     private
