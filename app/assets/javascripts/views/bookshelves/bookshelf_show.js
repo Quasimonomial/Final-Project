@@ -29,8 +29,8 @@ GoodThings.Views.BookshelfShow = Backbone.View.extend({
 		event.preventDefault();
 
 		console.log("adding book");
-		var book_id = $(event.target).serializeJSON().book_id;
-		this.model.add_book_to_shelf(book_id);
+		var bookIsbn = $(event.target).serializeJSON().bookIsbn;
+		this.model.add_book_to_shelf(bookIsbn);
 	},
 
 	removeBookFromShelf: function(event){
